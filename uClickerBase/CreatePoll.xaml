@@ -1,0 +1,33 @@
+﻿<Page x:Class="uClickerBase.CreatePoll"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="600"
+	Title="CreatePoll">
+
+    <Grid>
+        <Label Content="Question:" HorizontalAlignment="Left" Margin="100,50,431,0" VerticalAlignment="Top" Width="69"/>
+        <TextBox Name="tbQuestion" HorizontalAlignment="Left" Height="50" Margin="200,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335"/>
+        <Label Content="Responses:" HorizontalAlignment="Left" Margin="100,115,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="tbAnswer" HorizontalAlignment="Left" Height="50" Margin="200,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335"/>
+        <DataGrid Name="dgResponses" IsReadOnly="True" HorizontalAlignment="Left" Margin="200,192,0,0" VerticalAlignment="Top" Height="150" Width="335" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="1*" Header="Responses" Binding="{Binding strResponse}"/>
+                <DataGridTemplateColumn Header="Remove">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnRemove_Click">X</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="540,119,0,0" VerticalAlignment="Top" Width="50" Click="btnAdd_Click"/>
+        <CheckBox Name="chkVerified" Content="Verified" HorizontalAlignment="Left" Margin="200,347,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="chkAnon" Content="Anonymous" HorizontalAlignment="Left" Margin="320,350,0,0" VerticalAlignment="Top" Unchecked="chkAnon_Checked" Checked="chkAnon_Checked"/>
+        <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="200,391,0,0" VerticalAlignment="Top" Width="75" Click="btnCreate_Click"/>
+
+    </Grid>
+</Page>

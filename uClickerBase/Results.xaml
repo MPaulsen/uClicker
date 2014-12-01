@@ -1,0 +1,18 @@
+﻿<Page x:Class="uClickerBase.Results"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="600"
+	Title="Results">
+
+    <Grid>
+        <Label Name="lblQuestion" Content="This is a placeholder question and how would you respond?" HorizontalAlignment="Center" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="20" Height="100"/>
+        <Label Name="lblStatus" Content="Open" HorizontalAlignment="Center" Margin="32,115,522,0" VerticalAlignment="Top" FontSize="15" Foreground="Lime"/>
+        <StackPanel Name="stkResults" HorizontalAlignment="Center" Height="569" Margin="32,160,32,0" VerticalAlignment="Top" Width="536"/>
+        <Button Content="Close" HorizontalAlignment="Center" Margin="32,768,493,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Return" HorizontalAlignment="Center" Margin="494,768,32,0" VerticalAlignment="Top" Width="74" Click="btnReturn_Click"/>
+
+    </Grid>
+</Page>

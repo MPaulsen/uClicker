@@ -1,7 +1,10 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="uClickerBase.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UDB" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=184.88.49.211;Database=uClicker;User Id=Taylias;
+Password=prower;</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

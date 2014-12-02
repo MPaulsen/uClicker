@@ -37,6 +37,14 @@ namespace uClickerBase
             tbAnswer.Clear();
         }
 
+        private void tbAnswer_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnAdd.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
+        }
+
         public void chkAnon_Checked(object sender, RoutedEventArgs e)
         {
             if (chkAnon.IsChecked.Value)
@@ -64,12 +72,33 @@ namespace uClickerBase
 
         public void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            ;
             //Do the database work.
-            //MessageBox.Show "Created!"
+            string question = tbQuestion.Text.ToString();
+            List<String> responses = new List<String>();
+
+            foreach(Response re in dgResponses.Items)
+                responses.Add(re.strResponse);
+
+            DateTime created = DateTime.Now;
+
+            dbControls.dbNonQuery(@"
+            INSERT INTO Polls (UserID, PollCode, Created, Active, Verified, Anonymous, GroupID, Question)
+            VALUES('" + formMain.userName + "', '" + getPollCode() + "', '" + created + "', 1, 0, 0, NULL, '" + question + "')");
+            
+            foreach (String answer in responses)
+                dbControls.dbNonQuery(@"
+                INSERT INTO Polls_Responses (PollID, Response)
+                VALUES((SELECT PollID FROM Polls WHERE Created = '" + created + "' AND UserID = '" + formMain.userName + "' AND Question = '" + question + "'), '" + answer + "')");
+
             //Redirect to live results view.
             Results pgResults = new Results(formMain, "1234");
             formMain.frmBody.Content = pgResults;
+
+        }
+
+        private string getPollCode()
+        {
+            return "ALDK";
         }
     }
 }

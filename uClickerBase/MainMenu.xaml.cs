@@ -27,12 +27,14 @@ namespace uClickerBase
 
             formMain = frmMain;
 
+            /* While testing, leave all buttons showing.
             if (formMain.userName == "Guest")
             {
                 btnGroups.Visibility = Visibility.Hidden;
                 btnReview.Visibility = Visibility.Hidden;
                 btnUsers.Visibility = Visibility.Hidden;
             }
+            */
             /* Query for user role on initialization and run this check 
             else if (userRole != "Admin")
             {
@@ -45,6 +47,16 @@ namespace uClickerBase
         {
             CreatePoll newPoll = new CreatePoll(formMain);
             formMain.frmBody.Content = newPoll;
+        }
+
+        private void btnUsers_Click(object sender, RoutedEventArgs e)
+        {
+            formMain.frmBody.Content = new Users(formMain);
+        }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            formMain.frmBody.Content = new Login(formMain);
         }
     }
 }

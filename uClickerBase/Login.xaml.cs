@@ -38,5 +38,35 @@ namespace uClickerBase
             MainMenu menu = new MainMenu(formMain);
             formMain.frmBody.Content = menu;
         }
+
+        private void txtUser_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            txtUser.Clear();
+        }
+
+        private void txtPass_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            txtPass.Clear();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            string inputUser = txtUser.Text;
+
+            if (Convert.ToInt32(dbControls.dbQuery("SELECT COUNT(UserID) FROM Users WHERE UserID = '" + inputUser + "'")) < 1)
+            {
+                MessageBox.Show("No such user exists.");
+                return;
+            }
+
+            if (dbControls.dbQuery("SELECT Password FROM Users WHERE UserID = '" + inputUser + "'") == txtPass.Password)
+            {
+                formMain.userName = inputUser;
+                formMain.frmBody.Content = new MainMenu(formMain);
+            }
+
+            else
+                MessageBox.Show("Incorrect username/password.");
+        }
     }
 }

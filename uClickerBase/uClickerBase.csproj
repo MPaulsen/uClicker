@@ -57,6 +57,9 @@
     <Compile Include="Results.xaml.cs">
       <DependentUpon>Results.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Users.xaml.cs">
+      <DependentUpon>Users.xaml</DependentUpon>
+    </Compile>
     <Page Include="CreatePoll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +94,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Results.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

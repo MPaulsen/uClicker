@@ -58,22 +58,18 @@ namespace uClickerBase
 
         public void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            ;
+            dgResponses.Items.Remove(dgResponses.SelectedItem);
         }
 
-        public class Response
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            public string strResponse { get; set; }
-            public Response(string input)
-            {
-                strResponse = input;
-            }
+            formMain.frmBody.Content = new MainMenu(formMain);
         }
 
         public void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             //Do the database work.
-            string question = tbQuestion.Text.ToString();
+            string question = tbQuestion.Text.ToString().Replace("'", "''");
             List<String> responses = new List<String>();
 
             foreach(Response re in dgResponses.Items)
@@ -83,22 +79,32 @@ namespace uClickerBase
 
             dbControls.dbNonQuery(@"
             INSERT INTO Polls (UserID, PollCode, Created, Active, Verified, Anonymous, GroupID, Question)
-            VALUES('" + formMain.userName + "', '" + getPollCode() + "', '" + created + "', 1, 0, 0, NULL, '" + question + "')");
-            
+            VALUES('" + formMain.userName + "', '" + getPollCode() + "', '" + created + "', 1, " + ((chkVerified.IsChecked.Value) ? "1" : "0") + ", " + ((chkAnon.IsChecked.Value) ? "1" : "0") + ", NULL, '" + question + "')");
+
+            string currentPollID = dbControls.dbQuery("SELECT PollID FROM Polls WHERE Created = '" + created + "' AND UserID = '" + formMain.userName + "' AND Question = '" + question + "'");
+
             foreach (String answer in responses)
                 dbControls.dbNonQuery(@"
-                INSERT INTO Polls_Responses (PollID, Response)
-                VALUES((SELECT PollID FROM Polls WHERE Created = '" + created + "' AND UserID = '" + formMain.userName + "' AND Question = '" + question + "'), '" + answer + "')");
+                INSERT INTO Responses (PollID, Response)
+                VALUES(" + currentPollID + ", '" + answer.Replace("'", "''") + "')");
 
             //Redirect to live results view.
-            Results pgResults = new Results(formMain, "1234");
+            Results pgResults = new Results(formMain, currentPollID);
             formMain.frmBody.Content = pgResults;
 
         }
 
         private string getPollCode()
         {
-            return "ALDK";
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var random = new Random();
+            string result;
+            
+            result = new string(Enumerable.Repeat(chars, 4).Select(s => s[random.Next(s.Length)]).ToArray());
+
+            while (Convert.ToInt32(dbControls.dbQuery("SELECT COUNT(PollCode) FROM Polls WHERE PollCode = '" + result + "' AND Active = 1")) > 0)
+                result = new string(Enumerable.Repeat(chars, 4).Select(s => s[random.Next(s.Length)]).ToArray());
+            return result;
         }
     }
 }

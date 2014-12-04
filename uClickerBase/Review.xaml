@@ -1,0 +1,41 @@
+﻿<Page x:Class="uClickerBase.Review"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="600"
+	Title="Review">
+
+    <Grid>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnBack_Click"/>
+        <DataGrid Name="dgPolls" HorizontalAlignment="Stretch" Margin="10,70,10,200"  VerticalAlignment="Stretch" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="PollID" Binding="{Binding PollID}" IsReadOnly="True" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Owner" Binding="{Binding UserID}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Code" Binding="{Binding PollCode}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Created" Binding="{Binding Created}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Active" Binding="{Binding Active}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Verified" Binding="{Binding Verified}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Anonymous" Binding="{Binding Anonymous}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Group" Binding="{Binding GroupName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Question" Binding="{Binding Question}" IsReadOnly="True" Width="1*"/>
+                <DataGridTextColumn Header="Responses" Binding="{Binding Responses}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Results">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnResults_Click">Results</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnDelete_Click">Delete</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

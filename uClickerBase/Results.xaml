@@ -8,11 +8,12 @@
 	Title="Results">
 
     <Grid>
-        <Label Name="lblQuestion" Content="This is a placeholder question and how would you respond?" HorizontalAlignment="Center" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="20" Height="100"/>
-        <Label Name="lblStatus" Content="Open" HorizontalAlignment="Center" Margin="32,115,522,0" VerticalAlignment="Top" FontSize="15" Foreground="Lime"/>
-        <StackPanel Name="stkResults" HorizontalAlignment="Center" Height="569" Margin="32,160,32,0" VerticalAlignment="Top" Width="536"/>
-        <Button Content="Close" HorizontalAlignment="Center" Margin="32,768,493,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Return" HorizontalAlignment="Center" Margin="494,768,32,0" VerticalAlignment="Top" Width="74" Click="btnReturn_Click"/>
+        <Label Name="lblQuestion" Content="This is a placeholder question and how would you respond?" HorizontalAlignment="Center" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Name="lblPollCode" Content="PollCode" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Name="lblStatus" Content="Open" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" FontSize="15" Foreground="Lime"/>
+        <StackPanel Name="stkResults" HorizontalAlignment="Stretch"  Margin="50,125,50,50" VerticalAlignment="Stretch" />
+        <Button Content="Close" HorizontalAlignment="Left" Margin="32,0,0,10" VerticalAlignment="Bottom" Width="75" Click="btnClose_Click"/>
+        <Button Content="Return" HorizontalAlignment="Right" Margin="0,0,32,10" VerticalAlignment="Bottom" Width="74" Click="btnReturn_Click"/>
 
     </Grid>
 </Page>

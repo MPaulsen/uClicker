@@ -6,5 +6,8 @@
       <Value Profile="(Default)">Server=184.88.49.211;Database=uClicker;User Id=Taylias;
 Password=prower;</Value>
     </Setting>
+    <Setting Name="URL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">www.CoderHusky.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -10,7 +10,7 @@
     <Grid>
 
         <TextBox Name="txtUser" HorizontalAlignment="Center" Height="23" Margin="50,27,50,0" VerticalAlignment="Top" Width="200"/>
-        <PasswordBox Name="txtPass" HorizontalAlignment="Center" Height="23" Margin="50,78,50,0" VerticalAlignment="Top" Width="200"/>
+        <PasswordBox Name="txtPass" HorizontalAlignment="Center" Height="23" Margin="50,78,50,0" VerticalAlignment="Top" Width="200" KeyDown="txtPass_KeyDown" />
         <Button Name="btnGuest" Content="Guest" HorizontalAlignment="Center" Margin="50,118,175,0" VerticalAlignment="Top" Width="75" Click="btnGuest_Click"/>
         <Button Name="btnLogin" Content="Login" HorizontalAlignment="Center" Margin="175,118,50,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click"/>
         <Label Content="Username" HorizontalAlignment="Center" Margin="50,0,187,0" VerticalAlignment="Top"/>

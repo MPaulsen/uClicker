@@ -9,7 +9,7 @@
 
     <Grid>
         <Button Name="btnCreate" Content="Create" HorizontalAlignment="Center" Margin="150,50,350,0" VerticalAlignment="Top" Width="100" Click="btnCreate_Click"/>
-        <Button Name="btnReview" Content="Review" HorizontalAlignment="Center" Margin="350,50,150,0" VerticalAlignment="Top" Width="100"/>
+        <Button Name="btnReview" Content="Review" HorizontalAlignment="Center" Margin="350,50,150,0" VerticalAlignment="Top" Width="100" Click="btnReview_Click"/>
         <Button Name="btnGroups" Content="Groups" HorizontalAlignment="Center" Margin="150,150,350,0" VerticalAlignment="Top" Width="100"/>
         <Button Name="btnUsers"  Content="Users" HorizontalAlignment="Center" Margin="350,150,150,0" VerticalAlignment="Top" Width="100" Click="btnUsers_Click"/>
         <Button Name="btnLogOut" Content="Log Out" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Width="75" Click="btnLogOut_Click"/>

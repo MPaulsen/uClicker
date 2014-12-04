@@ -27,20 +27,18 @@ namespace uClickerBase
 
             formMain = frmMain;
 
-            /* While testing, leave all buttons showing.
             if (formMain.userName == "Guest")
             {
                 btnGroups.Visibility = Visibility.Hidden;
                 btnReview.Visibility = Visibility.Hidden;
                 btnUsers.Visibility = Visibility.Hidden;
             }
-            */
-            /* Query for user role on initialization and run this check 
-            else if (userRole != "Admin")
+
+            else if (formMain.userRole != "Admin")
             {
                 btnUsers.Visibility = Visibility.Hidden;
             }
-            */
+
         }
 
         public void btnCreate_Click(object sender, RoutedEventArgs e)
@@ -57,6 +55,11 @@ namespace uClickerBase
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             formMain.frmBody.Content = new Login(formMain);
+        }
+
+        private void btnReview_Click(object sender, RoutedEventArgs e)
+        {
+            formMain.frmBody.Content = new Review(formMain);
         }
     }
 }

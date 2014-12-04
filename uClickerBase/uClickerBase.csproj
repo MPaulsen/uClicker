@@ -54,8 +54,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="dbControls.cs" />
+    <Compile Include="Response.cs" />
     <Compile Include="Results.xaml.cs">
       <DependentUpon>Results.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Review.xaml.cs">
+      <DependentUpon>Review.xaml</DependentUpon>
     </Compile>
     <Compile Include="Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
@@ -94,6 +98,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Results.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Review.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

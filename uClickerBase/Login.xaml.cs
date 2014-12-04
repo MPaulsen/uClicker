@@ -30,6 +30,7 @@ namespace uClickerBase
         public void btnGuest_Click(object sender, RoutedEventArgs e)
         {
             formMain.userName = "Guest";
+            formMain.userRole = "User";
             loadMenu();
         }
 
@@ -62,11 +63,18 @@ namespace uClickerBase
             if (dbControls.dbQuery("SELECT Password FROM Users WHERE UserID = '" + inputUser + "'") == txtPass.Password)
             {
                 formMain.userName = inputUser;
+                formMain.userRole = dbControls.dbQuery("SELECT Role FROM Users WHERE UserID = '" + inputUser + "'");
                 formMain.frmBody.Content = new MainMenu(formMain);
             }
 
             else
                 MessageBox.Show("Incorrect username/password.");
+        }
+
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                btnLogin.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         }
     }
 }

@@ -12,7 +12,7 @@
         <TextBox Name="tbQuestion" HorizontalAlignment="Left" Height="50" Margin="200,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335"/>
         <Label Content="Responses:" HorizontalAlignment="Left" Margin="100,115,0,0" VerticalAlignment="Top"/>
         <TextBox Name="tbAnswer" HorizontalAlignment="Left" Height="50" Margin="200,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" KeyDown="tbAnswer_Enter"/>
-        <DataGrid Name="dgResponses" IsReadOnly="True" HorizontalAlignment="Left" Margin="200,192,0,0" VerticalAlignment="Top" Height="150" Width="335" AutoGenerateColumns="False" CanUserAddRows="False">
+        <DataGrid Name="dgResponses" HorizontalAlignment="Left" IsReadOnly="True" Margin="200,192,0,0" VerticalAlignment="Top" Height="150" Width="335" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="1*" Header="Responses" Binding="{Binding strResponse}"/>
                 <DataGridTemplateColumn Header="Remove">
@@ -28,6 +28,7 @@
         <CheckBox Name="chkVerified" Content="Verified" HorizontalAlignment="Left" Margin="200,347,0,0" VerticalAlignment="Top"/>
         <CheckBox Name="chkAnon" Content="Anonymous" HorizontalAlignment="Left" Margin="320,350,0,0" VerticalAlignment="Top" Unchecked="chkAnon_Checked" Checked="chkAnon_Checked"/>
         <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="200,391,0,0" VerticalAlignment="Top" Width="75" Click="btnCreate_Click"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
 
     </Grid>
 </Page>

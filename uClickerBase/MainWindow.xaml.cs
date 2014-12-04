@@ -21,11 +21,14 @@ namespace uClickerBase
     public partial class MainWindow : Window
     {
         public String userName;
+        public String userRole;
+
         public MainWindow()
         {
             InitializeComponent();
 
             frmBody.Content = new Login(this);
+            lblURL.Content = Properties.Settings.Default.URL;
         }
     }
 }

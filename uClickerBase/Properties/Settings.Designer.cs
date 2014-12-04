@@ -34,5 +34,17 @@ namespace uClickerBase.Properties {
                 this["UDB"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("www.CoderHusky.com")]
+        public string URL {
+            get {
+                return ((string)(this["URL"]));
+            }
+            set {
+                this["URL"] = value;
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@
         Title="uClicker" Height="600" Width="800">
     <Grid>
         <Label Content="uClicker" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="40"/>
+        <Label Name="lblURL" HorizontalAlignment="Center" Margin="0,52,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Frame Name="frmBody" Margin="10,100,10,10" NavigationUIVisibility="Hidden">
             
         </Frame>

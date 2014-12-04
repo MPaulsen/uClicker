@@ -9,5 +9,8 @@ Password=prower;</Value>
     <Setting Name="URL" Type="System.String" Scope="User">
       <Value Profile="(Default)">www.CoderHusky.com</Value>
     </Setting>
+    <Setting Name="PollRate" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

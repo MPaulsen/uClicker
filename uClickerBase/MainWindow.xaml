@@ -1,8 +1,8 @@
 ﻿<Window x:Class="uClickerBase.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="uClicker" Height="600" Width="800">
-    <Grid>
+        Title="uClicker" Height="600" Width="800" Icon="/favicon.ico">
+    <Grid Background="DarkGray">
         <Label Content="uClicker" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="40"/>
         <Label Name="lblURL" HorizontalAlignment="Center" Margin="0,52,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Frame Name="frmBody" Margin="10,100,10,10" NavigationUIVisibility="Hidden">

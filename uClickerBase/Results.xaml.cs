@@ -25,6 +25,7 @@ namespace uClickerBase
     {
         MainWindow formMain;
         String currentPoll;
+        List<Brush> brushList;
         bool active;
         bool open;
 
@@ -40,6 +41,15 @@ namespace uClickerBase
             lblPollCode.Content = "Poll Code: " + dbControls.dbQuery("SELECT PollCode FROM Polls WHERE PollID = " + currentPoll);
             active = (dbControls.dbQuery("SELECT Active FROM Polls WHERE PollID = " + currentPoll) == "True");
             open = true;
+
+            brushList = new List<Brush>();
+            brushList.Add(Brushes.Red);
+            brushList.Add(Brushes.Green);
+            brushList.Add(Brushes.Blue);
+            brushList.Add(Brushes.Orange);
+            brushList.Add(Brushes.Purple);
+
+
 
             if (active)
             {
@@ -65,7 +75,7 @@ namespace uClickerBase
                 }));
 
             //Time between updates.
-            Thread.Sleep(500);
+            Thread.Sleep(Properties.Settings.Default.PollRate);
         }
 
         private void bg_worker_Completed(object sender, RunWorkerCompletedEventArgs e)
@@ -113,6 +123,9 @@ namespace uClickerBase
                 ProgressBar resultBar = new ProgressBar();
                 float result = (totalVotes == 0) ? 0 :  ((float)responseList[i].voterCount / (float)totalVotes) * 100;
                 resultBar.Value = result;
+                resultBar.Height = 50;
+                resultBar.Foreground = brushList[i%5];
+                
                 Label lblResultName = new Label();
                 lblResultName.Content = responseList[i].strResponse;
                 Label lblResultStats = new Label();

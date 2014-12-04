@@ -46,5 +46,17 @@ namespace uClickerBase.Properties {
                 this["URL"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int PollRate {
+            get {
+                return ((int)(this["PollRate"]));
+            }
+            set {
+                this["PollRate"] = value;
+            }
+        }
     }
 }

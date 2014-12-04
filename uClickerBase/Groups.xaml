@@ -1,0 +1,39 @@
+﻿<Page x:Class="uClickerBase.Groups"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="600"
+	Title="Groups">
+
+    <Grid>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnBack_Click"/>
+        <DataGrid Name="dgGroups" HorizontalAlignment="Stretch" Margin="10,70,10,200" VerticalAlignment="Stretch" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="GroupID" Binding="{Binding GroupID}" IsReadOnly="True" Visibility="Hidden"/>
+                <DataGridTextColumn Header="GroupName" Binding="{Binding GroupName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Group Owner" Binding="{Binding GroupOwner}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Members" Binding="{Binding Members}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Manage">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnManage_Click">Manage</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnDelete_Click">Delete</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Add Group:" HorizontalAlignment="Left" Margin="10,0,0,152" VerticalAlignment="Bottom"/>
+        <Label Content="Group Name:" HorizontalAlignment="Left" Margin="34,0,0,121" VerticalAlignment="Bottom"/>
+        <TextBox Name="txtGroupName" HorizontalAlignment="Left" Height="23" Margin="34,0,0,103" VerticalAlignment="Bottom" Width="120"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="34,0,0,50" VerticalAlignment="Bottom" Width="120" Height="23" Click="btnCreate_Click"/>
+    </Grid>
+</Page>

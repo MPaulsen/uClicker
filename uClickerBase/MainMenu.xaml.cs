@@ -61,5 +61,10 @@ namespace uClickerBase
         {
             formMain.frmBody.Content = new Review(formMain);
         }
+
+        private void btnGroups_Click(object sender, RoutedEventArgs e)
+        {
+            formMain.frmBody.Content = new Groups(formMain);
+        }
     }
 }

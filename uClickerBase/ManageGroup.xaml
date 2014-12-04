@@ -1,0 +1,31 @@
+﻿<Page x:Class="uClickerBase.ManageGroup"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="600"
+	Title="Group Management">
+
+    <Grid>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnBack_Click"/>
+        <Label Name="lblGroupName"  Content="Lost Colony" HorizontalAlignment="Stretch" Margin="65,10,10,0" VerticalAlignment="Top" Height="50" FontSize="30" />
+        <DataGrid Name="dgGroupMembers" HorizontalAlignment="Stretch" Margin="10,70,10,200" VerticalAlignment="Stretch" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="GroupID" Binding="{Binding GroupID}" IsReadOnly="True" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Member UserID" Binding="{Binding PollerID}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnDelete_Click">Delete</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Add Member:" HorizontalAlignment="Left" Margin="10,0,0,152" VerticalAlignment="Bottom"/>
+        <Label Content="Member UserID:" HorizontalAlignment="Left" Margin="34,0,0,121" VerticalAlignment="Bottom"/>
+        <TextBox Name="txtMemberID" HorizontalAlignment="Left" Height="23" Margin="34,0,0,103" VerticalAlignment="Bottom" Width="120"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="34,0,0,50" VerticalAlignment="Bottom" Width="120" Height="23" Click="btnCreate_Click"/>   
+    </Grid>
+</Page>

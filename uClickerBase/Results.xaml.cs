@@ -150,6 +150,11 @@ namespace uClickerBase
             ClosePoll();
         }
 
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+            formMain.frmBody.Content = new ResultDetails(formMain, currentPoll);
+        }
+
         private void ClosePoll()
         {
             active = false;

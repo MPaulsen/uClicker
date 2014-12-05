@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,31 @@ namespace uClickerBase
         {
             InitializeComponent();
             formMain = frmMain;
+            loadGroups();
+        }
+
+        private void loadGroups()
+        {
+            Group cbiSelectGroup = new Group("0", "Select:");
+            
+            ddlGroup.Items.Add(cbiSelectGroup);
+
+            if (formMain.userName != "Guest")
+            {
+                SqlConnection con = new SqlConnection(Properties.Settings.Default.UDB);
+                String query = @"SELECT GroupID, GroupName FROM Groups WHERE GroupOwner = '" + formMain.userName + "'";
+                SqlCommand cmd = new SqlCommand(query, con);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    Group newGroup = new Group(rdr[0].ToString(), rdr[1].ToString());
+                    ddlGroup.Items.Add(newGroup);
+                }
+                con.Close();
+                ddlGroup.SelectedIndex = 0;
+            }
         }
 
         public void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -56,6 +82,14 @@ namespace uClickerBase
                 chkVerified.IsEnabled = true;
         }
 
+        public void chkVerified_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chkVerified.IsChecked.Value)
+                ddlGroup.IsEnabled = true;
+            else
+                ddlGroup.IsEnabled = false;
+        }
+
         public void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             dgResponses.Items.Remove(dgResponses.SelectedItem);
@@ -68,6 +102,14 @@ namespace uClickerBase
 
         public void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            if (chkVerified.IsChecked.Value)
+            {
+                if (ddlGroup.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Verified polls must be assigned to a group.");
+                    return;
+                }
+            }
             //Do the database work.
             string question = tbQuestion.Text.ToString().Replace("'", "''");
             List<String> responses = new List<String>();
@@ -79,7 +121,7 @@ namespace uClickerBase
 
             dbControls.dbNonQuery(@"
             INSERT INTO Polls (UserID, PollCode, Created, Active, Verified, Anonymous, GroupID, Question)
-            VALUES('" + formMain.userName + "', '" + getPollCode() + "', '" + created + "', 1, " + ((chkVerified.IsChecked.Value) ? "1" : "0") + ", " + ((chkAnon.IsChecked.Value) ? "1" : "0") + ", NULL, '" + question + "')");
+            VALUES('" + formMain.userName + "', '" + getPollCode() + "', '" + created + "', 1, " + ((chkVerified.IsChecked.Value) ? "1" : "0") + ", " + ((chkAnon.IsChecked.Value) ? "1" : "0") + ", " + ((chkVerified.IsChecked.Value) ? ((Group)ddlGroup.SelectedItem).groupID : "NULL") + ", '" + question + "')");
 
             string currentPollID = dbControls.dbQuery("SELECT PollID FROM Polls WHERE Created = '" + created + "' AND UserID = '" + formMain.userName + "' AND Question = '" + question + "'");
 
@@ -105,6 +147,17 @@ namespace uClickerBase
             while (Convert.ToInt32(dbControls.dbQuery("SELECT COUNT(PollCode) FROM Polls WHERE PollCode = '" + result + "' AND Active = 1")) > 0)
                 result = new string(Enumerable.Repeat(chars, 4).Select(s => s[random.Next(s.Length)]).ToArray());
             return result;
+        }
+
+        public class Group : ComboBoxItem
+        {
+            public String groupID { get; set; }
+            
+            public Group(string _groupID, string _groupName)
+            {
+                this.groupID = _groupID;
+                this.Content = _groupName;
+            }
         }
     }
 }

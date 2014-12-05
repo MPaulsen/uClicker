@@ -64,6 +64,9 @@
       <DependentUpon>ManageGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Response.cs" />
+    <Compile Include="ResultDetails.xaml.cs">
+      <DependentUpon>ResultDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Results.xaml.cs">
       <DependentUpon>Results.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ManageGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResultDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

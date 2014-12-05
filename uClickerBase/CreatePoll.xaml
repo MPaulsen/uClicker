@@ -25,10 +25,12 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="540,119,0,0" VerticalAlignment="Top" Width="50" Click="btnAdd_Click"/>
-        <CheckBox Name="chkVerified" Content="Verified" HorizontalAlignment="Left" Margin="200,347,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="chkVerified" Content="Verified" HorizontalAlignment="Left" Margin="200,347,0,0" VerticalAlignment="Top" Checked="chkVerified_Checked"/>
         <CheckBox Name="chkAnon" Content="Anonymous" HorizontalAlignment="Left" Margin="320,350,0,0" VerticalAlignment="Top" Unchecked="chkAnon_Checked" Checked="chkAnon_Checked"/>
-        <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="200,391,0,0" VerticalAlignment="Top" Width="75" Click="btnCreate_Click"/>
+        <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="200,421,0,0" VerticalAlignment="Top" Width="75" Click="btnCreate_Click"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
+        <ComboBox Name="ddlGroup" HorizontalAlignment="Left" Margin="200,371,0,0" VerticalAlignment="Top" Width="335" IsEnabled="False"/>
+        <Label Content="Group:" HorizontalAlignment="Left" Margin="122,371,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

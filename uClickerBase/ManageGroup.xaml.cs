@@ -46,7 +46,7 @@ namespace uClickerBase
         {
             SqlConnection con = new SqlConnection(Properties.Settings.Default.UDB);
             String query = @"SELECT GroupID, PollerID
-                             FROM [uClicker].[dbo].[Groups_Members]
+                             FROM [Groups_Members]
                              WHERE GroupID = " + groupID;
             SqlCommand cmd = new SqlCommand(query, con);
 

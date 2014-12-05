@@ -9,7 +9,7 @@
 
     <Grid>
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnBack_Click"/>
-        <DataGrid Name="dgPolls" HorizontalAlignment="Stretch" Margin="10,70,10,200"  VerticalAlignment="Stretch" CanUserAddRows="False" AutoGenerateColumns="False">
+        <DataGrid Name="dgPolls" HorizontalAlignment="Stretch" Margin="10,70,10,10"  VerticalAlignment="Stretch" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="PollID" Binding="{Binding PollID}" IsReadOnly="True" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Owner" Binding="{Binding UserID}" IsReadOnly="True"/>
